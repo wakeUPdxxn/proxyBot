@@ -8,10 +8,6 @@ ProxyBot::ProxyBot() {
     for (const auto& id : allowedId) {
         users.emplace(id, new User);
     }
-    Target* target = new Target();
-    target->ip = "127.0.0.1";
-    target->os = "Windows 9";
-    users.at(673910625)->targets.insert({ "1", target});
 }
 
 ProxyBot::~ProxyBot() {

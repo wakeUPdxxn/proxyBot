@@ -16,7 +16,7 @@ public:
     
 private:
     struct Target {
-        std::string os
+        std::string os;
         std::string ip;
         std::string passCount;
         std::string cookieCount;
