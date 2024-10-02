@@ -6,7 +6,7 @@ If comeone interested in...To build:
 - 3)mkdir build && cd build
 - 4)cmake ..
 ## or just:
-- ./build.sh__
+- ./build.sh <br />
 Executable file will be located in "rootFolder"/bin
 # ToDo
 - interprocess communication for recieve data
