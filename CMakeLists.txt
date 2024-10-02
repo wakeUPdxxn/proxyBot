@@ -9,6 +9,8 @@ set(Boost_USE_MULTITHREADED ON)
 SET(HEADERS ./src/ProxyBot.hpp ./src/ProxyBot.hpp)
 SET(SOURCES ./src/ProxyBot.cpp ./src/main.cpp)
 
+include(GNUInstallDirs)
+
 find_package(Threads REQUIRED)
 find_package(CURL)
 find_package(OpenSSL REQUIRED)
@@ -21,5 +23,6 @@ if (CURL_FOUND)
 endif()
 
 add_executable(proxyBot ${HEADERS} ${SOURCES})
+install(TARGETS proxyBot DESTINATION ../../${CMAKE_BINARY_DIR})
 
 target_link_libraries(proxyBot C:/Work/libs/vcpkg/installed/x64-windows/lib/TgBot.lib #[[Change this path to local TgBot.lib]] ${CMAKE_THREAD_LIBS_INIT} ${OPENSSL_LIBRARIES} ${Boost_LIBRARIES} ${CURL_LIBRARIES})
