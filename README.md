@@ -5,7 +5,8 @@ If comeone interested in...To build:
 - 2)Edit your local path to tgBot.lib at CMakeLists.txt
 - 3)mkdir build && cd build
 - 4)cmake ..
-- 5)./proxyBot
+## or just:
+- ./build.sh. Executable file will be located in "rootFolder"/bin
 # ToDo
 - interprocess communication for recieve data
 - target data output to user
