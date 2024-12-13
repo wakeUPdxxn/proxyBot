@@ -1,5 +1,4 @@
 #include <exception>
-#include <iostream>
 #include <string>
 #include <vector>
 #include <unordered_map>
@@ -13,8 +12,23 @@ public:
     ProxyBot();
     ~ProxyBot();
     void start();
-    
+
 private:
+    void parseAllowedList();
+    void setCommands();
+    void setEventFunc();
+    void performTargetsColumn(const std::string& id);
+
+
+private:
+    std::vector<uint64_t>allowedId;
+
+    TgBot::Bot bot{ token };
+    std::string token{ std::getenv("ProxyBotToken") }; //set env variable with your token 
+
+    TgBot::InlineKeyboardMarkup::Ptr targetsMarkup;
+    std::vector<TgBot::InlineKeyboardButton::Ptr> targetsColumn;
+
     struct Target {
         std::string os;
         std::string ip;
@@ -35,18 +49,5 @@ private:
         Target* currentTarget = nullptr;
         std::unordered_map<std::string, Target*>targets; //unique target id,pointer to target struct
     };
-    std::string token{ std::getenv("proxyBotToken")}; //set env variable with your token 
-    TgBot::Bot bot{ token };
-
-    TgBot::InlineKeyboardMarkup::Ptr targetsMarkup;
-
     std::unordered_map<uint64_t, User*>users;
-    std::vector<uint64_t>allowedId;
-
-    std::vector<TgBot::InlineKeyboardButton::Ptr> targetsColumn;
-
-    void parseAllowedList();
-    void setCommands();
-    void setEventFunc();
-    void performTargetsColumn(const std::string& id);
 };
