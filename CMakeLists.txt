@@ -9,32 +9,26 @@ set(Boost_USE_MULTITHREADED ON)
 SET(HEADERS ./src/ProxyBot.hpp ./src/ProxyBot.hpp)
 SET(SOURCES ./src/ProxyBot.cpp ./src/main.cpp)
 
-set(FETCHCONTENT_BASE_DIR "${CMAKE_BINARY_DIR}/3rdparty")
-
-include(FetchContent)
-FetchContent_Declare(
-  tgbot-cpp
-  GIT_REPOSITORY https://github.com/reo7sp/tgbot-cpp.git
-  GIT_TAG        v1.8
-)
-
-FetchContent_MakeAvailable(tgbot-cpp)
-
-include(GNUInstallDirs)
-
 find_package(Threads REQUIRED)
 find_package(CURL)
 find_package(OpenSSL REQUIRED)
-find_package(Boost COMPONENTS system REQUIRED)
+find_package(Boost COMPONENTS json system REQUIRED)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/tgbot-cpp/include)
 include_directories(${OPENSSL_INCLUDE_DIR} ${Boost_INCLUDE_DIR})
 
 if (CURL_FOUND)
-    include_directories(${CURL_INCLUDE_DIRS})
+    include_directories(${CURL_INCLUDE_DIR})
     add_definitions(-DHAVE_CURL)
 endif()
 
+add_subdirectory(tgbot-cpp)
+
 add_executable(proxyBot ${HEADERS} ${SOURCES})
-install(TARGETS proxyBot DESTINATION ../../${CMAKE_BINARY_DIR})
+
+target_link_libraries(proxyBot ${CMAKE_THREAD_LIBS_INIT} ${OPENSSL_LIBRARIES} ${CURL_LIBRARIES} ${BOOST_LIBRARIES}
+    ${CMAKE_CURRENT_BINARY_DIR}/tgbot-cpp/TgBot.lib)
+
+include(GNUInstallDirs)
+install(TARGETS proxyBot DESTINATION ${CMAKE_INSTALL_BINDIR})
                                 
-target_link_libraries(proxyBot ${CMAKE_BINARY_DIR}/3rdparty/tgbot-cpp-build/TgBot.lib
-                 ${CMAKE_THREAD_LIBS_INIT} ${OPENSSL_LIBRARIES} ${CURL_LIBRARIES}  Boost::system)
