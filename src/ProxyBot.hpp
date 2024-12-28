@@ -23,8 +23,8 @@ private:
 private:
     std::vector<uint64_t>allowedId;
 
-    TgBot::Bot bot{ token };
     std::string token{ std::getenv("ProxyBotToken") }; //set env variable with your token 
+    TgBot::Bot bot{ token };
 
     TgBot::InlineKeyboardMarkup::Ptr targetsMarkup;
     std::vector<TgBot::InlineKeyboardButton::Ptr> targetsColumn;
