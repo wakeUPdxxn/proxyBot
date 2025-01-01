@@ -3,7 +3,8 @@
 
 using namespace std;
 
-ProxyBot::ProxyBot() {
+ProxyBot::ProxyBot() 
+{
     targetsMarkup = std::make_shared<TgBot::InlineKeyboardMarkup>();
     
     parseAllowedList();
@@ -47,6 +48,11 @@ void ProxyBot::start() {
     catch (TgBot::TgException& e) {
         cout << e.what() << endl;
     }
+}
+
+void ProxyBot::onNewData()
+{
+    std::cout << "new target";
 }
 
 void ProxyBot::performTargetsColumn(const std::string &id) {

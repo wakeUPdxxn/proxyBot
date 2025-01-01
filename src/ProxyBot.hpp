@@ -1,3 +1,4 @@
+#pragma once
 #include <exception>
 #include <string>
 #include <vector>
@@ -12,6 +13,7 @@ public:
     ProxyBot();
     ~ProxyBot();
     void start();
+    void onNewData();
 
 private:
     void parseAllowedList();
