@@ -1,4 +1,5 @@
 #include "ProxyBot.hpp"
+#include "IPC.hpp"
 
 int main() {
     std::shared_ptr<ProxyBot>bot(new ProxyBot);
