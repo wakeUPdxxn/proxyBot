@@ -26,7 +26,9 @@ cmake ..
 cmake --build . 
 ```
 #### Or just:
-``` ./build.sh ```
+``` 
+./build.sh
+```
 <!-- -->
 ***Executable file will be located in "rootFolder"/bin***
 # ToDo
