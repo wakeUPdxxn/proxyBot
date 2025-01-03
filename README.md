@@ -10,10 +10,14 @@ Requires:
 ## Env. and deps.
 First of all you neeed to obtain your bot token and create an environment var. named as proxyBotToken  <br />
 #### Then in the root directory run:
-git submodule init <br />
-git submodule update <br />
+```
+git submodule init
+git submodule update
+```
 #### Install requirements by: <br />
+```
 apt-get install -y libpthread-stubs0-dev libcurl-dev libssl-dev libboost-system-dev libboost-exception-dev
+```
 ## To build with cmake:
 - mkdir build && cd build
 - cmake ..
