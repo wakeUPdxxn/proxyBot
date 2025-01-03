@@ -10,7 +10,7 @@ Requires:
 ***If comeone interested in, follow the steps below***<br />
 ## Env. and deps.
 First of all you neeed to obtain your bot token and create an environment var. named as `proxyBotToken`  <br />
-#### Then in the root directory run:
+#### In the root directory run:
 ```
 git submodule init
 git submodule update
