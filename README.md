@@ -1,5 +1,5 @@
 # proxyBot
-Bot for receiving data from a third-party process and forwarding it to a specific user <br /> <br />
+Bot for receiving data from a third-party process and forwarding it to a certain user <br /> <br />
 Requires:
 - Threads
 - CURL(optional)
