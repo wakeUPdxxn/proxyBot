@@ -23,14 +23,14 @@ ProxyBot::~ProxyBot() {
 
 void ProxyBot::parseAllowedList(){
     fstream in; 
-    in.open("allowedUsersId", ios::in);
-
-    stringstream ss;
-    ss << in.rdbuf();
-
-    uint64_t id;
-    while (ss >> id) {
-        allowedId.push_back(id);
+    in.open("allowedUsers", ios::in);
+    if (!in.is_open()) {
+        std::cout << "cant open white list file" << std::endl;
+        return;
+    }
+    std::string line;
+    while (std::getline(in, line)) {
+        allowedId.push_back(std::stoull(line));
     }
 }
 
