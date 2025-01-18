@@ -5,6 +5,7 @@
 out
 build
 *.json
+allowedUsers.txt
 
 # Compiled Object files
 *.slo
